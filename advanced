@@ -1,0 +1,43 @@
+</!DOCTYPE html>
+<html>
+<head>
+	<title>CaesarCipher</title>
+</head>
+<body>
+
+</body>
+<script>
+function cipher (alphabet){
+	alphabet = prompt("enter alphabet", alphabet);
+	let input = prompt("enter text");
+	let k = Number(prompt ("enter number"));
+	if (k < 0) k = k + alphabet.length; //for negative k-value
+	let output ='';
+
+	for (i = 0; i < input.length; i++){
+		let num=alphabet.indexOf(input[i]); //access alphabet index
+		let char;
+		if (num > -1){ //character found in alphabet
+			let j=(num+k)%alphabet.length;//new index value for output
+			char = alphabet[j]; //assign new index value
+		} else {
+			num = alphabet.indexOf(input[i].toLowerCase()) //for uppercase letters
+			if ( num > -1 ) { //character found in alphabet
+				let j = (num + k) % alphabet.length;
+				char = alphabet[j].toUpperCase();
+			} else { //character not found in alphabet
+				char = input[i]; //outputs same character as input
+			}
+		}		
+		output += char;
+	 }
+
+ 	alert(output);
+}
+// function cipherGeo() {
+// 	return cipher('აბგდევზთიკლმნოპჟრსტუფქღყშჩცძწჭხჯჰ');
+// }
+
+cipher("abcdefghijklmnopqrstuvwxyz");
+</script>
+</html>
